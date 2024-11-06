@@ -1,47 +1,32 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <v-card>
+    <v-layout>
+      <v-navigation-drawer v-model="drawer" :rail="rail" permanent @click="rail = false">
+        <v-list-item
+          prepend-avatar="data:image/jpeg;base64,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"
+          title="Hi"
+          nav
+        >
+          <template v-slot:append>
+            <v-btn icon="mdi-chevron-left" variant="text" @click.stop="rail = !rail"></v-btn>
+          </template>
+        </v-list-item>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+        <v-divider></v-divider>
 
-  <main>
-    <TheWelcome />
-  </main>
+        <v-list density="compact" nav>
+          <v-list-item prepend-icon="mdi-account" title="내 계정" value="account"></v-list-item>
+          <v-list-item prepend-icon="mdi-delete" title="쓰레기통찾기" value="home"></v-list-item>
+        </v-list>
+      </v-navigation-drawer>
+      <v-main style="height: 100%"></v-main>
+    </v-layout>
+  </v-card>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script setup lang="ts">
+import { ref } from 'vue'
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+const drawer = ref(true)
+const rail = ref(true)
+</script>
