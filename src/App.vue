@@ -19,14 +19,47 @@
           <v-list-item prepend-icon="mdi-delete" title="쓰레기통찾기" value="home"></v-list-item>
         </v-list>
       </v-navigation-drawer>
-      <v-main style="height: 100%"></v-main>
+      <v-main style="min-height: 100vh">
+        <div id="map" style="width: 100%; height: 100%;"></div>
+      </v-main>
     </v-layout>
   </v-card>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const drawer = ref(true)
 const rail = ref(true)
+const createMap = (): void => {
+  // 네이버 지도 API가 로딩되었는지 확인하고 지도를 초기화합니다.
+  if (typeof naver !== 'undefined' && naver.maps) {
+    const mapContainer = document.getElementById('map') as HTMLElement;
+
+    // mapContainer가 null인지 체크
+    if (!mapContainer) {
+      console.error("지도 컨테이너를 찾을 수 없습니다.");
+      return;
+    }
+
+    const mapOptions = {
+      center: new naver.maps.LatLng(37.5665, 126.9780), // 서울의 좌표
+      zoom: 10,
+    };
+
+    new naver.maps.Map(mapContainer, mapOptions);
+    console.log("good")
+  } else {
+    console.error("네이버 지도 API가 로드되지 않았습니다.");
+  }
+};
+
+onMounted(() => {
+  // 네이버 지도 API가 로드되었을 때만 createMap을 호출
+  if (typeof window.naver !== 'undefined' && window.naver.maps) {
+    createMap();
+  } else {
+    console.error("네이버 지도 API가 로드되지 않았습니다.");
+  }
+});
 </script>
