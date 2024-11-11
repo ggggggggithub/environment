@@ -10,6 +10,4 @@ declare global {
 }
 let naver: any
 let map: any
-
-
 </script>
