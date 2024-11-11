@@ -1,5 +1,5 @@
 <template>
-    <div id="map">kakao맵 보기</div>
+    <div id="map">naver맵 보기</div>
   </template>
 
 <script setup lang="ts">
