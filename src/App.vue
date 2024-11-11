@@ -20,48 +20,16 @@
         </v-list>
       </v-navigation-drawer>
       <v-main style="height: 100vh">
-        <div id="map" style="width: 80%; height: 80%;"></div>
       </v-main>
     </v-layout>
   </v-card>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 
 const drawer = ref(true)
 const rail = ref(true)
-const createMap = (): void => {
-  if (typeof naver !== 'undefined' && naver.maps) {
-    const mapContainer = document.getElementById('map') as HTMLElement;
 
-    if (!mapContainer) {
-      console.error("지도 컨테이너를 찾을 수 없습니다.");
-      return;
-    }
-
-    const mapOptions: naver.maps.MapOptions = {
-        center: new naver.maps.LatLng(37.5665, 126.9780), // 서울의 좌표
-        zoom: 10,
-        zoomControl: true, // 줌 컨트롤 활성화
-        zoomControlOptions: {
-          position: naver.maps.Position.TOP_RIGHT, // 컨트롤 위치 설정
-        },
-      };
-
-    new naver.maps.Map(mapContainer, mapOptions);
-    console.log("good")
-  } else {
-    console.error("네이버 지도 API가 로드되지 않았습니다.");
-  }
-};
-
-onMounted(() => {
-  if (typeof window.naver !== 'undefined' && window.naver.maps) {
-    createMap();
-  } else {
-    console.error("네이버 지도 API가 로드되지 않았습니다.");
-  }
-});
 </script>
 
