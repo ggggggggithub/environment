@@ -24,14 +24,6 @@ function loadMap() {
 
   map = new window.kakao.maps.Map(container, options)
 
-  // // 마커가 표시될 위치입니다
-  // const markerPosition = new window.kakao.maps.LatLng(33.450701, 126.570667)
-
-  // // 마커를 생성합니다
-  // const marker = new window.kakao.maps.Marker({
-  //   position: markerPosition,
-  // })
-
   const positions = [
     {
       title: '카카오',
@@ -51,17 +43,17 @@ function loadMap() {
     },
   ]
 
-  // 마커 이미지의 이미지 주소입니다
+  // 마커 이미지의 이미지 주소
   const imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png'
 
   for (let i = 0; i < positions.length; i++) {
-    // 마커 이미지의 이미지 크기 입니다
+    // 마커 이미지의 이미지 크기
     const imageSize = new window.kakao.maps.Size(24, 35)
 
-    // 마커 이미지를 생성합니다
+    // 마커 이미지를 생성
     const markerImage = new window.kakao.maps.MarkerImage(imageSrc, imageSize)
 
-    // 마커를 생성합니다
+    // 마커 생성
     const marker = new window.kakao.maps.Marker({
       map: map, // 마커를 표시할 지도
       position: positions[i].latlng, // 마커를 표시할 위치
