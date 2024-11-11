@@ -19,13 +19,16 @@
           <v-list-item prepend-icon="mdi-delete" title="쓰레기통찾기" value="home"></v-list-item>
         </v-list>
       </v-navigation-drawer>
-      <v-main style="height: 100%"></v-main>
+      <v-main>
+        <KakaoMapVue />
+      </v-main>
     </v-layout>
   </v-card>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import KakaoMapVue from './components/KakaoMap.vue'
 
 const drawer = ref(true)
 const rail = ref(true)
