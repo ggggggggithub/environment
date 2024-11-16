@@ -19,14 +19,19 @@
           <v-list-item prepend-icon="mdi-delete" title="쓰레기통찾기" value="home"></v-list-item>
         </v-list>
       </v-navigation-drawer>
-      <v-main style="height: 100%"></v-main>
+      <v-main>
+        <NaverMapVue />
+      </v-main>
     </v-layout>
   </v-card>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import NaverMapVue from './components/NaverMap.vue';
 
 const drawer = ref(true)
 const rail = ref(true)
+
 </script>
+
