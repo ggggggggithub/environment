@@ -45,7 +45,7 @@ function showCurrentLocation(map: any) {
 
         // 지도 중심 이동
         map.setCenter(userLocation);
-        map.setZoom(15); // 적당한 줌 레벨 설정
+        map.setZoom(15); 
       },
       (error) => {
         console.error("Geolocation Error: ", error);
